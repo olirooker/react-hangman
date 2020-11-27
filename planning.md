@@ -31,7 +31,8 @@ Hangman.
 ### Structure:
 
 - App
-- List
--
+- Game
+  - function formatWord - take the random word and turn each letter into *.
+  - input space which takes the users letter and compares it to the random word
 
 Individual Breakdowns

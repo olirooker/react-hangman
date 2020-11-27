@@ -1,4 +1,5 @@
 import React from "react";
+import Game from './Game'
 
 class App extends React.Component {
   state = {
@@ -6,15 +7,16 @@ class App extends React.Component {
       animals: ["Chicken", "Horse", "Sloth", "Armadillo"],
       films: ["Batman", "Inception", "Jaws", "Parasite"],
     },
+    chosenWord: '',
+    lettersGuessed: []
   };
 
   wordPicker = (catergory) => {
     const word = this.state.catergories[catergory][
       Math.floor(Math.random() * this.state.catergories[catergory].length)
     ];
-    console.log(word);
+    this.setState({ chosenWord: word })
   };
-  // Math.floor((Math.random()* state.catergories["animals"].length) -1) // 0-3
 
   render() {
     return (
@@ -34,6 +36,8 @@ class App extends React.Component {
         >
           Films
         </button>
+        <p>Word</p>
+        <Game chosenWord={this.state.chosenWord} lettersGuessed={this.state.lettersGuessed} />
       </div>
     );
   }
