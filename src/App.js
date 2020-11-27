@@ -1,25 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+class App extends React.Component {
+  state = {
+    catergories: {
+      animals: ["Chicken", "Horse", "Sloth", "Armadillo"],
+      films: ["Batman", "Inception", "Jaws", "Parasite"],
+    },
+  };
+
+  wordPicker = (catergory) => {
+    const word = this.state.catergories[catergory][
+      Math.floor(Math.random() * this.state.catergories[catergory].length)
+    ];
+    console.log(word);
+  };
+  // Math.floor((Math.random()* state.catergories["animals"].length) -1) // 0-3
+
+  render() {
+    return (
+      <div>
+        <h1>Hangman</h1>
+        <button
+          onClick={() => {
+            this.wordPicker("animals");
+          }}
         >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+          Animals
+        </button>
+        <button
+          onClick={() => {
+            this.wordPicker("films");
+          }}
+        >
+          Films
+        </button>
+      </div>
+    );
+  }
 }
 
 export default App;
